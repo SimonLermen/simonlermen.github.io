@@ -32,16 +32,18 @@ domain: simonlermen.github.io
 remote_theme: samarsault/plainwhite-jekyll
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 plainwhite:
   name: Simon Lermen
   tagline: Developer. Researcher
   date_format: "%b %-d, %Y"
+  portfolio_image: face.png
 
   social_links:
-    twitter: samarsault
-    github: samarsault
-    linkedIn: in/samarsault # format: locale/username
+    twitter: simonlermenai
+    github: dalasnoin
+    linkedIn: in/simon-l772743a7 # format: locale/username
 
 # Exclude from processing.
 # The following items will not be processed, by default.
