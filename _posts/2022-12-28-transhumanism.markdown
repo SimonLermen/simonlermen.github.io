@@ -1,11 +1,10 @@
 ---
 layout: post
-title:  "Why I am not a transhumanist"
+title:  "Why I am not a Transhumanist"
 date:   2022-12-28 18:07:10 +0000
 categories: Transhumanism
 ---
 
-sketch argument
 
 - ASI likely to be centralized for multiple reasons
   - requires huge resources to start
