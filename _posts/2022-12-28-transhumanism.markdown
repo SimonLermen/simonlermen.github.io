@@ -19,5 +19,3 @@ What would it take for transhumanism to actually make a difference in any way?
 Even if that would work, would it bring us closer to a solution of ai alignment?
 
 Does it functionally differ from wireheading?
-
-Few people take transhumanism seriously but these are just my thoughts on why it is probably not a direction worth hoping for.
