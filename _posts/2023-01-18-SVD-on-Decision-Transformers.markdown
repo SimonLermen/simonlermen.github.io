@@ -5,9 +5,8 @@ date:   2023-01-18 16:07:10 +0000
 categories: Interpretability
 ---
 
-This post is still an early draft.
 
-SVD can be applied to the OV circuit and MLP weights of a transformer for interpretability. [In the case of LLMs the resulting singular vectors frequently appear to be semantically interpretable by taking the cosine similarity to the vectors of the output token embedding](https://www.lesswrong.com/posts/mkbGjzxD8d8XqKHzA/the-singular-value-decompositions-of-transformer-weight). This work seeks to extend this line of research from language models to decision transformers. Decision transformers have a similar architecture but use action, state, reward and time embeddings. Just like in the original post from Conjecture, I have looked at the SVD of the [OV-circuit](https://transformer-circuits.pub/2021/framework/index.html) and of the first (K) and second (V) layer of the MLP.
+SVD can be applied to the OV circuit and MLP weights of a transformer for interpretability. [In the case of LLMs the resulting singular vectors frequently appear to be semantically interpretable by taking the cosine similarity to the vectors of the output token embedding](https://www.lesswrong.com/posts/mkbGjzxD8d8XqKHzA/the-singular-value-decompositions-of-transformer-weight). This work seeks to extend this line of research from language models to decision transformers. Decision transformers have a similar architecture but use action, state, reward, and time embeddings. Just like in the original post from Conjecture, I have looked at the SVD of the [OV-circuit](https://transformer-circuits.pub/2021/framework/index.html) and of the first (K) and second (V) layers of the MLP.
  There are usually also separate output embeddings for action and state. By measuring the cosine similarity of different weight singular vectors to the different embeddings, it can be shown how different weights attend to different inputs and which outputs they produce. This approach might admit locating the origin of actions and where input data is processed in a transformer. To further confirm these results, edits are made to the weights and it is observed that the results are in line with the locations found with SVD. If there is a stronger cosine similarity between actions and singular vectors, edits to those weights cause the agent to fail. Similar edits to other parts do not cause this failure.
 Since this post is looking at many different embeddings, the embedding vectors have been normalized to make them more comparable. All of the results show the inner product of two 128-dimensional norm 1 vectors. 
 
@@ -17,7 +16,7 @@ I have also made the decision to show the absolute value of the inner product. S
             
 ## SVD for Searching the Origin of Actions
 
-SVD on the K weights of the MLP compared to the Action Output Embedding appears to show some causal relationship. In comparison, the cosine similarity was much greater for the K weights than for any other part of the transformer Block. I have also tried to edit the weights of the transformer MLP by setting one of the singular vectors equal to [1, 1, ...] / 128. Editing the K values seems to have a very significant effect on the performance of the agent. On the other hand the effects appears much smaller for the V values. The video below shows the effects of editing the first and third singular value respectively on the K weights and then the V weights.
+SVD on the K weights of the MLP compared to the Action Output Embedding appears to show some causal relationship. In comparison, the cosine similarity was much greater for the K weights than for any other part of the transformer Block. I have also tried to edit the weights of the transformer MLP by setting one of the singular vectors equal to [1, 1, ...] / 128. Editing the K values seems to have a very significant effect on the performance of the agent. On the other hand, the effects appear much smaller for the V values. The video below shows the effects of editing the first and third singular vectors respectively on the K weights and then the V weights.
 
 ```math
 U, S, V = SVD(M)
@@ -324,7 +323,7 @@ The strongest signal for the input reward embedding can be found in the V weight
 
 ## Time Embedding
 
-It was pretty unclear what the plots for the timestep embedding meant, it did appear that the V weights of the MLP in the first transfomer block showed reaction to the embedding. In general this task probably does not really require knowledge of the time to be successfully completed. That could explaing why there doesn't seem to be any structure to this.
+It was pretty unclear what the plots for the timestep embedding meant, it did appear that the V weights of the MLP in the first transformer block showed reactions to the embedding. In general, this task probably does not really require knowledge of the time to be successfully completed. That could explain why there doesn't seem to be any structure to this.
 
 <html>
 <div id="TopKTable_5710075"></div>
@@ -1384,7 +1383,7 @@ It was pretty unclear what the plots for the timestep embedding meant, it did ap
 
 ## SVD on larger models like GPTJ-6b
 
-I also tried to apply the SVD method to larger models like gptj-6b both before and after finetuning. [Here is a notebook in the repo](https://github.com/DalasNoin/SVDInterpretTransformer/blob/main/svd_directions/gptj-6b.ipynb). While Conjecture used SVD on a gpt2-sized model in the original post, it appears that the SVD technique works significantly worse with larger models. I believe one of the reasons if the increased residual embeddings size of the tokens from 1024 to 4096 from gpt2 to gptj, making it significantly harder to achieve a high cosine similarity between two vectors.
+I also tried to apply the SVD method to larger models like gptj-6b both before and after finetuning. [Here is a notebook in the repo](https://github.com/DalasNoin/SVDInterpretTransformer/blob/main/svd_directions/gptj-6b.ipynb). While Conjecture used SVD on a gpt2-sized model in the original post, it appears that the SVD technique works significantly worse with larger models. I believe one of the reasons is the increased residual embedding size of the tokens from 1024 to 4096 from gpt2 to gptj, making it significantly harder to achieve a high cosine similarity between two vectors.
 
 ## Code
 
@@ -1392,10 +1391,10 @@ The code for this study can be found on my [github](https://github.com/dalasnoin
 
 ## Future Work
 
-- Pin down what these values actually mean and how it could be used to locate and edit knowledge or capabilities. 
+- Pin down what these values actually mean and how they could be used to locate and edit knowledge or capabilities. 
 - Editing the weight matrixes can be used to further explore where certain capabilities are residing in a model. I.e. If you predict that this part 
-- Discrete actionspace will make it easier to see such effects, I am working on getting such a model. 
-- Automate certain aspects that are currently done by hand, for example the current network has only 3 transformer blocks, I distinguish manually which weights show the greatest cosine similarity.
-- automate the evaluation for the change of the agents behaviour. currently i run the agent in simualtion and watch the agent. Ideally this could be automated to hundreds of runs and a statistical measure on how fast and often the agent fails.
-- The main conclussion of the original Conjecture post was that singular vectors frequently represent semantic connections. It is not clear how to move this to the space of decision transformers especially for this particular continuous environment. This might show up more clearly in a discrete environment.
+- Discrete action space will make it easier to see such effects, I am working on getting such a model. 
+- Automate certain aspects that are currently done by hand. For example, the current network has only 3 transformer blocks, I distinguish manually which weights show the greatest cosine similarity.
+- Automate the evaluation for the change of the agents behaviour. Currently i run the agent in simualtion and watch the agent. Ideally this could be automated to hundreds of runs and a statistical measure on how fast and often the agent fails.
+- The main conclusion of the original Conjecture post was that singular vectors frequently represent semantic clusters. It is not clear how to move this to the space of decision transformers, especially for this particular continuous environment. This might show up more clearly in a discrete environment.
 
