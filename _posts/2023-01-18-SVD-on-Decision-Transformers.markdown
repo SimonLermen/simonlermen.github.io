@@ -16,19 +16,7 @@ I have also made the decision to show the absolute value of the inner product. S
             
 ## SVD for Searching the Origin of Actions
 
-SVD on the K weights of the MLP compared to the Action Output Embedding appears to show some causal relationship. In comparison, the cosine similarity was much greater for the K weights than for any other part of the transformer Block. I have also tried to edit the weights of the transformer MLP by setting one of the singular vectors equal to [1, 1, ...] / 128. Editing the K values seems to have a very significant effect on the performance of the agent. On the other hand, the effects appear much smaller for the V values. The video below shows the effects of editing the first and third singular vectors respectively on the K weights and then the V weights.
-
-```math
-U, S, V = SVD(M)
-V[0,:] = 1/128
-M = U S V 
-```
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/I81Q-ixYZ24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</html>
-
-
-The K weights are the weights of the first Linear layer in the MLP of a transformer Block. Similar to the findings in gpt2 by Conjecture, the first singular vector seems to correspond with the most common output actions.
+The graphic below shows the results of SVD for the K weights. K weights are the weights of the first Linear layer in the MLP of a transformer Block. Similar to the findings in gpt2 by Conjecture, the first singular vector seems to correspond with the most common output actions. It appears, that the cosine similarities are generally high with the action output embedding.
 
 
  <html lang="en">
@@ -105,6 +93,81 @@ var loader;loader=(()=>{var __webpack_modules__={907:module=>{"use strict";modul
         })();
         </script>
     </body>
+</html>
+
+Conversly, the V weights show much lower cosine similarities.
+
+<html>
+<div id="TopKTable_5a15ca0"></div>
+        <script>
+        ( () => {
+            var data = {
+"tokens": [
+"bthigh",
+"bshin",
+"bfoot",
+"fthigh",
+"fshin",
+"ffoot"
+],
+"obj_type": "SVD direction",
+"layer_labels": [
+2
+],
+"obj_labels": [
+"0",
+"1",
+"2",
+"3",
+"4",
+"5",
+"6"
+],
+"topk_vals": {
+"__type__": "npy",
+"zdata": "eJyb7BfqGxDJyFDGUK2eklqcXKRupaBuU2qkrqOgnpZfVFKUmBefX5SSChJ3S8wpTgWKF2ckFqQC+RpmOgqGOgrmmjoKtQrkAa7kh42heYf0lnvkzGr99/9a91pP/7Vbe/kiZ+Wl997w6vXkSo4vmh4anHZX+ZXHJlUPi6mu5/SUo+z5YxQMVBdoLrOUVMkPaON2luLnkpJr0Z7GMtGPgQEA34Y8Zg==",
+"min": 0.0002385154366493225,
+"max": 0.22962889075279236
+},
+"topk_inds": {
+"__type__": "npy",
+"zdata": "eJyb7BfqGxDJyFDGUK2eklqcXKRupaBuU2qkrqOgnpZfVFKUmBefX5SSChJ3S8wpTgWKF2ckFqQC+RpmOgqGOgrmmjoKtQrkAa5//2fMZGAwMgbB1LTUNCPj02dmzISJ/fv/7//pMyASJAaSZWBITTt95vQZBgaQOhA7NQ2kBiT+7z8DA0gnAEFtRVE=",
+"min": 0.0,
+"max": 5.0
+},
+"bottomk_vals": {
+"__type__": "npy",
+"zdata": "eJyb7BfqGxDJyFDGUK2eklqcXKRupaBuU2qkrqOgnpZfVFKUmBefX5SSChJ3S8wpTgWKF2ckFqQC+RpmOgqGOgrmmjoKtQrkAa7kh42heYf0lnvkzGr99/9a91pP/7Vbe/kiZ+Wl997w6vXkSo4vmh4anHZX+ZXHJlUPi6mu5/SUo+z5YxQMVBdoLrOUVMkPaON2luLnkpJr0Z7GMtGPgQEA34Y8Zg==",
+"min": 0.0002385154366493225,
+"max": 0.22962889075279236
+},
+"bottomk_inds": {
+"__type__": "npy",
+"zdata": "eJyb7BfqGxDJyFDGUK2eklqcXKRupaBuU2qkrqOgnpZfVFKUmBefX5SSChJ3S8wpTgWKF2ckFqQC+RpmOgqGOgrmmjoKtQrkAa5//2fMZGAwMgbB1LTUNCPj02dmzISJ/fv/7//pMyASJAaSZWBITTt95vQZBgaQOhA7NQ2kBiT+7z8DA0gnAEFtRVE=",
+"min": 0.0,
+"max": 5.0
+},
+"filter": "topk"
+};
+            data = loader.unpack_obj(data);
+            window.TopKTable_data = data;
+            var TopKTable_inst = new TopKTable({
+                "target": document.getElementById("TopKTable_5a15ca0"),
+                "props": data
+                });
+        })();
+        </script>
+</html>
+
+SVD on the K weights of the MLP compared to the Action Output Embedding appears to show some causal relationship. In comparison, the cosine similarity was much greater for the K weights than for any other part of the transformer Block. Editing the weights of the transformer MLP by setting one of the singular vectors equal to [1, 1, ...] / 128 also seems to change the actions of the agent significantly. Editing the K values seems to have a very significant effect on the performance of the agent. On the other hand, the effects appear much smaller for the V values. The video below shows the effects of editing the first and third singular vectors respectively on the K weights and then the V weights.
+
+```math
+U, S, V = SVD(M)
+V[0,:] = 1/128
+M = U S V 
+```
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/I81Q-ixYZ24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </html>
 
 ## SVD for the State Input
