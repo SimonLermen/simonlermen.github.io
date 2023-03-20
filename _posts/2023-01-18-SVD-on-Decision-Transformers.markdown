@@ -95,7 +95,7 @@ var loader;loader=(()=>{var __webpack_modules__={907:module=>{"use strict";modul
     </body>
 </html>
 
-Conversly, the V weights show much lower cosine similarities.
+Conversely, the V weights show much lower cosine similarities.
 
 <html>
 <div id="TopKTable_5a15ca0"></div>
