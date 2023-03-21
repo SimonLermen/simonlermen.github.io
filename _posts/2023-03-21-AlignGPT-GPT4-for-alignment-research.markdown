@@ -1,30 +1,29 @@
 ---
 layout: post
-title:  "AlignGPT: GPT4 for alignment research"
+title:  "AlignGPT: GPT-4 for alignment research"
 date:   2023-03-21 01:07:10 +0000
 categories: AI GPT-4
 ---
 
-# AlignGPT: GPT-4 for alignment research
 
-I have been working in a small group on a project designed by Leon Lang in this [post](https://www.lesswrong.com/posts/Y59AYj5keDYHf29LK/experiment-idea-rl-agents-evading-learned-shutdownability).
+I have been working with a small group on a project that was designed by Leon Lang, as described in this [post](https://www.lesswrong.com/posts/Y59AYj5keDYHf29LK/experiment-idea-rl-agents-evading-learned-shutdownability) on LessWrong.
 This post is about 6000 tokens long and would not fit into the context size of gpt-3.5, so I decided to try out gpt-4. 
 
 ## Conclusion
 
-I believe the initial summary bby GPT-4 is useful and it would have been nice to have access to this when I first read the post.
+I believe the initial summary by GPT-4 is useful and it would have been nice to have access to this when I first read the post.
 It found some of the same criticisms that we also had, especially the part about the distributional shift. It suggested some ways to solve the issue like domain adaptation, domain randomization, or adversarial training.
 Some of the terms were new to me, for example Curriculum learning. So this could definitely be used to get an overview of existing research and useful techniques.
-In general, the current plan for the project has shifted quite far from the original post and much of this is not really relevant to the new plan. 
-But it seems these tools would be useful for future alignment projects:
+In general, the current plan for the project has shifted quite far from the original post and much of this is not really relevant to the new plan.
+Overall, these tools could help to accelerate the development and implementation of technical solutions in alignment projects:
 
  - Having a conversational agent than can explain posts and papers
- - Having an automated peer review agent
- - Having a tool that can help with the engineering part
+ - Having an automated peer review agent to streamline the process and improve the quality of feedback provided to authors
+ - Having a tool that can help with the engineering of alignment. Overall, this tool could help to accelerate the development and implementation of technical solutions in alignment projects, while also improving the quality and reliability of the final product. Existing projects could be scanned for bugs and testing could be added automatically.
 
 ## GPT-4 Peer review
 
-I used the GPT-4 API to create a paper review helper and got the following response to the post.
+I used the GPT-4 API to create a paper review helper and got the following response to the [post](https://www.lesswrong.com/posts/Y59AYj5keDYHf29LK/experiment-idea-rl-agents-evading-learned-shutdownability).
 
 This text presents an interesting idea for an experiment that aims to test the convergent drive of modern model-based reinforcement learning (RL) agents to evade shutdownability, a concept related to corrigibility. The author provides a detailed AGI training story, which is divided into three phases: training the RL agent for general world modeling, training the agent to achieve goals and stop moving when it hears a sound, and deploying the agent in the real world where the existential failure appears.
 
