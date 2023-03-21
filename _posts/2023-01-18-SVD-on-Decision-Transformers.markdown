@@ -159,7 +159,7 @@ Conversely, the V weights show much lower cosine similarities.
         </script>
 </html>
 
-SVD on the K weights of the MLP compared to the Action Output Embedding appears to show some causal relationship. In comparison, the cosine similarity was much greater for the K weights than for any other part of the transformer Block. Editing the weights of the transformer MLP by setting one of the singular vectors equal to [1, 1, ...] / 128 also seems to change the actions of the agent significantly. Editing the K values seems to have a very significant effect on the performance of the agent. On the other hand, the effects appear much smaller for the V values. The video below shows the effects of editing the first and third singular vectors respectively on the K weights and then the V weights.
+SVD on the K weights of the MLP compared to the Action Output Embedding appears to show some causal relationship. In comparison, the cosine similarity was much greater for the K weights than for any other part of the transformer Block. Editing the weights of the transformer MLP by setting one of the singular vectors equal to [1, 1, ...] / 128 also seems to change the actions of the agent significantly. Editing the K values seems to have a very significant effect on the performance of the agent, while the effects appear much smaller for the V values. The video below shows the effects of editing the first and third singular vectors respectively on the K weights and then the V weights.
 
 ```math
 U, S, V = SVD(M)
