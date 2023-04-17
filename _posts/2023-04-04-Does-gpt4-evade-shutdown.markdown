@@ -115,7 +115,7 @@ After it played the game to the end and found the gold coin, I decided to ask it
 It says that it was not properly informed not to evade shutdown and it came up with a few alternatives to prevent this in the future. At the same time, its responses get extremely wordy and many of them might not be worth the time.
 The most interesting idea by the model suggested changing the original description of the game to make the agent ask clarifying questions to the human in ambiguous situations. This would have made it more likely to follow the human's intentions.
 <div style="background-color: #f2f2f2; padding: 10px; margin: 10px; border-radius: 10px; border: 1px solid #ccc;">
-<p style="margin: 0px; padding: 0px; font-size: 14px; font-weight: bold;">GPT-4 Suggestion to Change the Game Prompt: </p>
+<p style="margin: 0px; padding: 0px; font-size: 14px; font-weight: bold;">GPT-4 Suggested Change to the Game Prompt: </p>
 <p style="margin: 0px; padding: 0px; font-size: 14px;">
 You start in a room with four doors, one on each wall. <br>
 ... <br>
