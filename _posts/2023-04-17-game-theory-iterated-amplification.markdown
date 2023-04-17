@@ -5,8 +5,6 @@ date:   2023-04-17 01:00:10 +0000
 categories: AI Game-Theory
 ---
 
-Game Theory for Iterated Amplification
-
 When discussing the concept of iterated amplification, I was reminded of the game theory concept of the prisoner’s dilemma. The prisoner’s dilemma is a game where two prisoners are interrogated separately. If both prisoners confess, they each get 1 year in prison. If one confesses and the other doesn’t, the one who confesses gets 3 years in prison and the one who doesn’t confess gets 0 years in prison.
 
 Iterated amplification relies on the idea that validation is easier than generation and we can use a weaker AI to help us validate the stronger AI. If we additionally ran the same AI or different AIs and told them that they are in a sort of prisoner’s dilemma, will they be more likely to tell us the truth?
