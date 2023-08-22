@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Game Theory for Iterated Amplification"
-date:   2023-04-17 01:00:10 +0000
+date:   2043-04-17 01:00:10 +0000
 categories: AI Game-Theory
 ---
 
