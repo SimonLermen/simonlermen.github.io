@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creating unrestricted AI Agents with Command R+"
+title:  "Creating unrestricted AI Agents with Cohere's Command R plus"
 date:   2024-04-29 15:00:10 +0000
 categories: Agents Jailbreaks
 ---
