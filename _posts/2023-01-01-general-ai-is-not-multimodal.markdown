@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "General AI is not the same as Multimodal AI"
-date:   2023-01-01 11:07:10 +0000
+date:   2123-01-01 11:07:10 +0000
 categories: AGI
 ---
 
